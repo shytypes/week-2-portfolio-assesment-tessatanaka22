@@ -8,3 +8,52 @@
 /* the font-family 'JetBrains Mono', has been linked
  * and is available for your use
  * */
+ body{
+  height: 100vh;
+  padding: 25px;
+  font-size: 20px;
+}
+h1, h3{
+font-size: 35px;
+text-align: center;
+}
+h4{
+  color: rgb(14, 14, 99);
+  font-size: 25px;
+}
+.contact-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.input-group {
+  margin-bottom: 1rem;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.input-group input, .input-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.submit-btn:hover {
+  background-color: #0056b3;
+}
