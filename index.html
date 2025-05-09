@@ -64,81 +64,60 @@
             <div class="input-group">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" required>
-                <span class="error" id="firstNameError"></span>
             </div>
             <div class="input-group">
                 <label for="lastName">Last Name</label>
                 <input type="text" id="lastName" required>
-                <span class="error" id="lastNameError"></span>
             </div>
             <div class="input-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" required>
-                <span class="error" id="emailError"></span>
             </div>
             <div class="input-group">
                 <label for="message">Message</label>
                 <textarea id="message" rows="4" maxlength="200" required></textarea>
-                <span class="char-counter" id="charCounter">0/200</span>
-                <span class="error" id="messageError"></span>
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
-            <p class="success" id="successMessage"></p>
         </form>
+
+        <div class="output-container">
+            <h3>Submitted Data:</h3>
+            <ul id="outputList" class="output-list"></ul>
+        </div>
     </div>
-
+    </main>
     <script>
-        const form = document.getElementById("contactForm");
-        const successMessage = document.getElementById("successMessage");
-        const charCounter = document.getElementById("charCounter");
-        const inputs = form.querySelectorAll("input, textarea");
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from reloading
 
-        inputs.forEach(input => {
-            input.addEventListener("input", () => {
-                const errorSpan = document.getElementById(input.id + "Error");
-                errorSpan.textContent = "";
+            // Get values from form
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
 
-                if (input.value.trim() === "") {
-                    input.classList.add("invalid");
-                    input.classList.remove("valid");
-                } else {
-                    input.classList.add("valid");
-                    input.classList.remove("invalid");
-                }
-            });
-        });
+            // Create a new list item for each input field
+            let outputList = document.getElementById("outputList");
+            outputList.innerHTML = ""; // Clear previous entries
 
-        document.getElementById("message").addEventListener("input", function() {
-            charCounter.textContent = this.value.length + "/200";
-        });
+            let data = [
+                { label: "First Name", value: firstName },
+                { label: "Last Name", value: lastName },
+                { label: "Email", value: email },
+                { label: "Message", value: message }
+            ];
 
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
-            let isValid = true;
-            successMessage.textContent = "";
-
-            inputs.forEach(input => {
-                const errorSpan = document.getElementById(input.id + "Error");
-                errorSpan.textContent = "";
-
-                if (input.value.trim() === "") {
-                    errorSpan.textContent = input.id + " is required";
-                    input.classList.add("invalid");
-                    input.classList.remove("valid");
-                    isValid = false;
-                }
+            data.forEach(item => {
+                let li = document.createElement("li");
+                li.classList.add("output-item");
+                li.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
+                outputList.appendChild(li);
             });
 
-            if (isValid) {
-                successMessage.textContent = "Form submitted successfully!";
-                inputs.forEach(input => {
-                    input.value = "";
-                    input.classList.remove("valid", "invalid");
-                });
-                charCounter.textContent = "0/200";
-            }
+            // Clear form fields
+            document.getElementById("contactForm").reset();
         });
     </script>
-
+   
   </body>
 </html>
