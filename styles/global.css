@@ -8,3 +8,79 @@
 /* the font-family 'JetBrains Mono', has been linked
  * and is available for your use
  * */
+ body{
+  height: 100vh;
+  padding: 25px;
+  font-size: 20px;
+}
+h1, h3{
+font-size: 35px;
+text-align: center;
+}
+h4{
+  color: rgb(14, 14, 99);
+  font-size: 25px;
+}
+.form-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+.form-container h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+.input-group {
+  margin-bottom: 1rem;
+}
+.input-group label {
+  font-size: 0.9rem;
+  color: #555;
+}
+.input-group input, .input-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.input-group input:focus, .input-group textarea:focus {
+  border-color: #007bff;
+}
+.input-group .error {
+  color: #e74c3c;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+.success {
+  color: #28a745;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+.char-counter {
+  font-size: 0.75rem;
+  color: #555;
+  text-align: right;
+}
+.valid {
+  background-color: #e0ffe0;
+}
+.invalid {
+  background-color: #ffe0e0;
+}

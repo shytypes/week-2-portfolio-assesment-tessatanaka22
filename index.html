@@ -21,7 +21,103 @@
     <header></header>
     <!-- Main Area -->
     <main>
-      <h1>My Amazing Portfolio</h1>
+      <h3 style=>TANAKA TESSA KAUKONDE</h3> <!--this is my full name-->
+    <address style="text-align: center;">12739 Budiriro 5B Harare, +263714175733 / +263785746896 <br> <a style="color: darkgreen ;" href="gmail.com, www.linkedin.com;"> tessatanaka22@gmail.com, www.linkedin.com/in/tanaka-tessa-kaukonde </a></address> <!--this is my contact info-->
+    <h4> Profile Summary </h4>
+    <hr>
+    <p> Computer Engineer with a strong focus on <b>frontend development</b> and expertise in <strong> React.js </strong>  creating scalable applications. <br> Skilled in optmising web applications for <em>perfomance</em> and <em> responsiveness</em>, with a focus on user-centric designs.</p> <!--this is my profile-->
+     <h4> Education </h4><hr>
+     <b> June 2024</b> <br>
+     <b > Bachelor of Science Honors Degree in Computer Engineering</b>, University of Zimbabwe <br> Degree Class: 2.1 <!--this is my highest esucational qualification-->
+     <br>
+     <br><b> November 2019</b> <br>
+     <b > Advanced Level</b>, 3 A level passes, 14 points <!--this is my high school qualification-->
+     <h4>Experience</h4>
+     <hr>
+     <b> September 2022 - September 2023</b> <br>
+     <strong >ICT Intern</strong>, Scotia Holdings
+     <p>Configured and operated VoIP phones, ensuring seamless connection.<br>
+    Created emails for users, optimizing account setup. <BR>
+    Troubleshooted and resolved printer issues.<br>
+    Assisted users with hardware and software setup and configuration. <br>
+    Supported data backup and recovery.
+    </p>
+    <h4 class="skills"> Skills </h4> <hr>
+    <p> Web development <br>
+    Problem Solving <br> 
+     Programming languages: C#, Python, HTML, CSS, Java and JavaScript <br>
+    Effective Communication</p>
+    <h4 class="projects">Projects</h4>
+    <hr>
+    <strong>LPG leakage detection system using XGBoost Machine Learning Algorithm</strong> <br>
+    <em>The project aimed to increase accuracy of residential LPG gas leak detection using machine language</em><br><br>
+    <strong>Scotia Autoparts Online Store with a chatbot</strong> <br>
+    <em> The project enhanced customer service by offering clients their requested services online</em>
+    <h4 class="languages">Languages</h4>
+    <hr>
+    Shona <br> English <br> Portuguese
+    <h4 class="references">References</h4> <hr>
+    <address>Eng A. Mukwazvure,<BR> University Of Zimbabwe <br> Phone: +2673236689</address>
+      <div class="form-container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <div class="input-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" required>
+            </div>
+            <div class="input-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="input-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" maxlength="200" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+
+        <div class="output-container">
+            <h3>Submitted Data:</h3>
+            <ul id="outputList" class="output-list"></ul>
+        </div>
+    </div>
     </main>
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from reloading
+
+            // Get values from form
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            // Create a new list item for each input field
+            let outputList = document.getElementById("outputList");
+            outputList.innerHTML = ""; // Clear previous entries
+
+            let data = [
+                { label: "First Name", value: firstName },
+                { label: "Last Name", value: lastName },
+                { label: "Email", value: email },
+                { label: "Message", value: message }
+            ];
+
+            data.forEach(item => {
+                let li = document.createElement("li");
+                li.classList.add("output-item");
+                li.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
+                outputList.appendChild(li);
+            });
+
+            // Clear form fields
+            document.getElementById("contactForm").reset();
+        });
+    </script>
+   
   </body>
 </html>
