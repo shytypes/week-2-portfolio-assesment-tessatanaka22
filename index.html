@@ -58,37 +58,87 @@
     Shona <br> English <br> Portuguese
     <h4 class="references">References</h4> <hr>
     <address>Eng A. Mukwazvure,<BR> University Of Zimbabwe <br> Phone: +2673236689</address>
-      <div class="section contact-form">
-        <h4>Contact Me</h4>
+      <div class="form-container">
+        <h2>Contact Us</h2>
         <form id="contactForm">
             <div class="input-group">
                 <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <input type="text" id="firstName" required>
+                <span class="error" id="firstNameError"></span>
             </div>
             <div class="input-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <input type="text" id="lastName" required>
+                <span class="error" id="lastNameError"></span>
             </div>
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" required>
+                <span class="error" id="emailError"></span>
             </div>
             <div class="input-group">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea id="message" rows="4" maxlength="200" required></textarea>
+                <span class="char-counter" id="charCounter">0/200</span>
+                <span class="error" id="messageError"></span>
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
+            <p class="success" id="successMessage"></p>
         </form>
     </div>
-    </main>
 
     <script>
-      document.getElementById('contactForm').addEventListener('submit', function(event) {
-          event.preventDefault();
-          alert('Your message has been sent!');
-          this.reset();
-      });
-  </script>
-  
+        const form = document.getElementById("contactForm");
+        const successMessage = document.getElementById("successMessage");
+        const charCounter = document.getElementById("charCounter");
+        const inputs = form.querySelectorAll("input, textarea");
+
+        inputs.forEach(input => {
+            input.addEventListener("input", () => {
+                const errorSpan = document.getElementById(input.id + "Error");
+                errorSpan.textContent = "";
+
+                if (input.value.trim() === "") {
+                    input.classList.add("invalid");
+                    input.classList.remove("valid");
+                } else {
+                    input.classList.add("valid");
+                    input.classList.remove("invalid");
+                }
+            });
+        });
+
+        document.getElementById("message").addEventListener("input", function() {
+            charCounter.textContent = this.value.length + "/200";
+        });
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            let isValid = true;
+            successMessage.textContent = "";
+
+            inputs.forEach(input => {
+                const errorSpan = document.getElementById(input.id + "Error");
+                errorSpan.textContent = "";
+
+                if (input.value.trim() === "") {
+                    errorSpan.textContent = input.id + " is required";
+                    input.classList.add("invalid");
+                    input.classList.remove("valid");
+                    isValid = false;
+                }
+            });
+
+            if (isValid) {
+                successMessage.textContent = "Form submitted successfully!";
+                inputs.forEach(input => {
+                    input.value = "";
+                    input.classList.remove("valid", "invalid");
+                });
+                charCounter.textContent = "0/200";
+            }
+        });
+    </script>
+
   </body>
 </html>
